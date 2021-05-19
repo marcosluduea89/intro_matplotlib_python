@@ -19,14 +19,26 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
+def diseño(ax, titulo):
+    ax.set_facecolor ('whitesmoke')
+    ax.set_title(titulo)
+    ax.set_ylabel('Eje Y')
+    ax.set_xlabel('Eje X')
+    ax.grid()
+    ax.legend()
+
+    return ax
+
+
 def ej1():
+
     # Line Plot
     # Se desea graficar los valores de X e Y en un gráfico de línea
 
     # Función que se desea graficar:
-    # y1 = x**2
+    #y1 = x**2
 
-    x = list(range(-10, 11, 1))
+    x = list(range(-10, 11, 5))
     # Estamos aprovechando el concepto de comprension de listas
     # para generar los valores que toma "Y" por cada valor de "X"
     y = []
@@ -37,6 +49,16 @@ def ej1():
     # Graficar el "line plot" de "Y" en función de "X"
     # Colocar la leyenda y el label con el nombre de la función
     # Darle color a la línea a su elección
+    fig = plt.figure()
+    ax = fig.add_subplot()
+
+    #ax.plot(x,y, c= 'b', label= 'y1 = x**2' )
+    ax.plot(x,y)
+    diseño(ax,'Funcion y1 = x**2')
+    
+    
+    plt.show()
+    print("Fin line plot")
 
 
 def ej2():
@@ -67,6 +89,17 @@ def ej2():
 
     # Cada función dibujarla con un color distinto
     # a su elección
+    
+    fig = plt.figure()
+    fig.suptitle('Funciones')
+    ax = fig.add_subplot()
+
+    ax.plot(x,y1, c= 'b',marker = '.', label= 'y1 = x**2')
+    ax.plot(x,y2, c= 'g',marker = '>', label= 'y2 = x**3') 
+
+    diseño(ax, 'y1 = x**2; y2 = x**3')
+    plt.show()
+    print("Fin line plot")
 
 
 def ej3():
@@ -87,6 +120,13 @@ def ej3():
     # cada gráfico
 
     # Elegir un marker a elección
+    fig = plt.figure()
+    fig.suptitle('Funcion Tanh')
+    ax = fig.add_subplot()
+
+    ax.scatter(x, y, c = 'b', marker = '.', label = 'y = tanh(x)')
+    diseño(ax, 'y = tanh(x)')
+    plt.show()
 
 
 def ej4():
@@ -126,11 +166,35 @@ def ej4():
 
     # Colocar una grilla a elección
 
+    fig = plt.figure()
+
+    ax1 = fig.add_subplot(2,2,1)
+    ax2 = fig.add_subplot(2,2,2)
+    ax3 = fig.add_subplot(2,2,3)
+    ax4 = fig.add_subplot(2,2,4)
+
+    ax1.plot(x,y1, c='b',marker = '.', label= 'y1 = x^2')
+    ax2.plot(x,y2, c='r', marker = ',',label='y2 = x^3')
+    ax3.plot(x,y3, c='m', marker = '+',label='y2 = x^3')
+    ax4.plot(x,y4, c='g', marker = '>',label='y2 = x^3')
+
+    diseño(ax1,'y1 = x^2')
+    diseño(ax2,'y2 = x^3')
+    diseño(ax3,'y2 = x^3')
+    diseño(ax3,'y2 = x^3')
+
+    plt.show()
+
+    
+    
+    
+    
+
 
 if __name__ == '__main__':
     print("Bienvenidos a otra clase de Inove con Python")
     ej1()
-    # ej2()
-    # ej2()
-    # ej3()
-    # ej4()
+    #ej2()
+    #ej3()
+    #ej4()
+    
